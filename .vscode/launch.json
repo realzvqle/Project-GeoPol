@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:projgeopol}",
+            "name": "Debug projgeopol",
+            "program": "${workspaceFolder:projgeopol}/.build/debug/projgeopol",
+            "preLaunchTask": "swift: Build Debug projgeopol"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:projgeopol}",
+            "name": "Release projgeopol",
+            "program": "${workspaceFolder:projgeopol}/.build/release/projgeopol",
+            "preLaunchTask": "swift: Build Release projgeopol"
+        }
+    ]
+}
