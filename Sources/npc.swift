@@ -62,15 +62,17 @@ class NPC {
 
         Raylib.drawCircle(Int32(self.x), Int32(self.y), 20, self.getRGB())
         if(self.hostility == true){
-            if player.x <= self.x {
-                self.x -= 400 * Float32(Raylib.getFrameTime())
-            } else if player.x >= self.x {
-                self.x += 400 * Float32(Raylib.getFrameTime())
-            } 
-            if player.y >= self.y {
-                self.y += 400 * Float32(Raylib.getFrameTime())
-            } else if player.y <= self.y {
-                self.y -= 400 * Float32(Raylib.getFrameTime())
+            if(abs(player.x - self.x) <= 400 || abs(player.y - self.y) <= 400) {
+                if player.x <= self.x {
+                    self.x -= 400 * Float32(Raylib.getFrameTime())
+                } else if player.x >= self.x {
+                    self.x += 400 * Float32(Raylib.getFrameTime())
+                } 
+                if player.y >= self.y {
+                    self.y += 400 * Float32(Raylib.getFrameTime())
+                } else if player.y <= self.y {
+                    self.y -= 400 * Float32(Raylib.getFrameTime())
+                }
             }
         }
     }

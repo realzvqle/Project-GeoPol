@@ -16,7 +16,7 @@ class Player{
         self.name = "Republic of Mokasia"
         self.nameshort = "Mokasia"
     }
-    func controlLoop(){
+    func controlLoop(camera: inout Camera2D){
         Raylib.drawText(self.nameshort, Int32(self.x), Int32(self.y) - 40, 20, Color.blue)
         Raylib.drawCircle(Int32(self.x), Int32(self.y), 20, Color.blue)
         if Raylib.isKeyDown(KeyboardKey.w) {
@@ -31,5 +31,8 @@ class Player{
         if Raylib.isKeyDown(KeyboardKey.d) {
             self.x += 600 * Raylib.getFrameTime()
         }
+        camera.target.x = Float(self.x) - (Float(Raylib.getScreenWidth()) / 2.0)
+        camera.target.y = Float(self.y) - (Float(Raylib.getScreenHeight()) / 2.0)
+        
     }
 }
