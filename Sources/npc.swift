@@ -8,6 +8,8 @@ class NPC {
     var respect: UInt8
     var name: String
     var nameshort: String
+    var x: Float32 = 90.0
+    var y: Float32 = 90.0
     private let namechoice = ["Consolan Republic", "Kingdom of Najidert", "Sovienian Union", 
                                          "Murri Revolutionary Forces", "Murican Empire", "Brotian State"]
     private let namechoiceshort = ["Consola", "Najidert", "Sovienia", 
@@ -54,6 +56,22 @@ class NPC {
             let blue: UInt8 = 0 
             return Color.init(r: red, g: green, b: blue, a: 255)
         }
-        
+    }
+    func controlLoop(player: Player) {
+        Raylib.drawText(self.nameshort, Int32(self.x), Int32(self.y) - 40, 20, self.getRGB())
+
+        Raylib.drawCircle(Int32(self.x), Int32(self.y), 20, self.getRGB())
+        if(self.hostility == true){
+            if player.x <= self.x {
+                self.x -= 400 * Float32(Raylib.getFrameTime())
+            } else if player.x >= self.x {
+                self.x += 400 * Float32(Raylib.getFrameTime())
+            } 
+            if player.y >= self.y {
+                self.y += 400 * Float32(Raylib.getFrameTime())
+            } else if player.y <= self.y {
+                self.y -= 400 * Float32(Raylib.getFrameTime())
+            }
+        }
     }
 }
