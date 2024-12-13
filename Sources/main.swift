@@ -6,8 +6,8 @@ func main(){
     Raylib.setTraceLogLevel(TraceLogLevel.error)
     Raylib.initWindow(1600, 900, "Project Geopol")
     let player: Player = Player()
-    let npc = NPC(index: 0)
-    let npc1 = NPC(index: 1)
+    let npc = NPC(index: -1)
+    let npc1 = NPC(index: 0)
 
     var camera = Camera2D(offset: Vector2.init(x: 0, y: 0), target: Vector2.init(x: 10, y: 10), rotation: 0, zoom: 1)
     while !Raylib.windowShouldClose {

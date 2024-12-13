@@ -3,22 +3,19 @@ import Raylib
 
 
 class Player{
-    var name: String
-    var nameshort: String
+    var faction: Factions
     var x: Float32 = Float32(Raylib.getScreenWidth()) / 2.0
     var y: Float32 = Float32(Raylib.getScreenHeight()) / 2.0
     func setName(name: String, nameshort: String) {
-        self.name = name
-        self.nameshort = nameshort
-        
+        self.faction.name = name
+        self.faction.nameshort = nameshort
     }
     init(){
-        self.name = "Republic of Mokasia"
-        self.nameshort = "Mokasia"
+        faction = Factions(index: -2)
     }
     func controlLoop(camera: inout Camera2D){
-        Raylib.drawText(self.nameshort, Int32(self.x), Int32(self.y) - 40, 20, Color.blue)
-        Raylib.drawCircle(Int32(self.x), Int32(self.y), 20, Color.blue)
+        Raylib.drawText(self.faction.nameshort, Int32(self.x), Int32(self.y) - 40, 20, self.faction.getRGB())
+        Raylib.drawCircle(Int32(self.x), Int32(self.y), 20, self.faction.getRGB())
         if Raylib.isKeyDown(KeyboardKey.w) {
             self.y -= 600 * Raylib.getFrameTime()
         }
